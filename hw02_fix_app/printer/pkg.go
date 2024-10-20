@@ -3,7 +3,7 @@ package printer
 import (
 	"fmt"
 
-	"github.com/PapaDjo2000/home_work_otus/tree/master/hw02_fix_app/types"
+	"github.com/PapaDjo2000/home_work_otus/hw02_fix_app/types"
 )
 
 func PrintStaff(staff []types.Employee) {

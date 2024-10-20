@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/PapaDjo2000/home_work_otus/tree/master/hw02_fix_app/printer"
-	"github.com/PapaDjo2000/home_work_otus/tree/master/hw02_fix_app/reader"
-	"github.com/PapaDjo2000/home_work_otus/tree/master/hw02_fix_app/types"
+	"github.com/PapaDjo2000/home_work_otus/hw02_fix_app/printer"
+	"github.com/PapaDjo2000/home_work_otus/hw02_fix_app/reader"
+	"github.com/PapaDjo2000/home_work_otus/hw02_fix_app/types"
 )
 
 func main() {
