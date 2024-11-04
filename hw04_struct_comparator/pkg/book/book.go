@@ -11,8 +11,7 @@ type Compare struct {
 }
 
 const (
-	identical          = "одинаковые"
-	Year      Usertype = iota
+	Year Usertype = iota
 	Size
 	Rate
 )
@@ -38,7 +37,7 @@ func NewBook(title, author string, year, size int, rate float32) *Book {
 	}
 }
 
-func (b Book) GetID() uuid.UUID {
+func (b *Book) ID() uuid.UUID {
 	return b.id
 }
 
@@ -46,7 +45,7 @@ func (b *Book) SetID(id uuid.UUID) {
 	b.id = id
 }
 
-func (b Book) GetTitle() string {
+func (b *Book) Title() string {
 	return b.title
 }
 
@@ -54,7 +53,7 @@ func (b *Book) SetTitle(title string) {
 	b.title = title
 }
 
-func (b Book) GetAuthor() string {
+func (b *Book) Author() string {
 	return b.author
 }
 
@@ -62,7 +61,7 @@ func (b *Book) SetAuthor(author string) {
 	b.author = author
 }
 
-func (b Book) GetYear() int {
+func (b *Book) Year() int {
 	return b.year
 }
 
@@ -70,7 +69,7 @@ func (b *Book) SetYear(year int) {
 	b.year = year
 }
 
-func (b Book) GetSize() int {
+func (b *Book) Size() int {
 	return b.size
 }
 
@@ -78,7 +77,7 @@ func (b *Book) SetSize(size int) {
 	b.size = size
 }
 
-func (b Book) GetRate() float32 {
+func (b *Book) Rate() float32 {
 	return b.rate
 }
 
@@ -92,35 +91,15 @@ func NewCompare(usertype Usertype) *Compare {
 	}
 }
 
-func (c Compare) CompareBook(book1, book2 Book) (t1 any) {
+func (c Compare) CompareBook(book1, book2 Book) bool {
 	switch c.Usertype {
 	case Year:
-		switch {
-		case book1.year > book2.year:
-			return true
-		case book1.year < book2.year:
-			return false
-		default:
-			return identical
-		}
+		return book1.year > book2.year
 	case Size:
-		switch {
-		case book1.size > book2.size:
-			return true
-		case book1.size < book2.size:
-			return false
-		default:
-			return identical
-		}
+		return book1.size > book2.size
 	case Rate:
-		switch {
-		case book1.rate > book2.rate:
-			return true
-		case book1.rate < book2.rate:
-			return false
-		default:
-			return identical
-		}
+		return book1.rate > book2.rate
+	default:
+		return false
 	}
-	return "ошибка"
 }
