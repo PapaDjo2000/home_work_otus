@@ -1,3 +1,5 @@
-module github.com/fixme_my_friend/hw04_struct_comparator
+module github.com/PapaDjo2000/home_work_otus/hw04_struct_comparator
 
 go 1.20
+
+require github.com/google/uuid v1.6.0
