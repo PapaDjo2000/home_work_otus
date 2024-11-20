@@ -1,22 +1,12 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 
-	"github.com/PapaDjo2000/home_work_otus/hw05_shapes/figura"
-	"github.com/PapaDjo2000/home_work_otus/hw05_shapes/shape"
+	"github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw05/calculate"
+	"github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw05/figura"
+	"github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw05/shape"
 )
-
-func calculateArea(s any) (float64, error) {
-	switch shape := s.(type) {
-	case shape.Shape:
-		return shape.Area(), nil
-	default:
-		err := errors.New("ошибка:переданный объект не является фигурой")
-		return 0, err
-	}
-}
 
 func main() {
 	var typeErr struct{}
@@ -32,25 +22,25 @@ func main() {
 		Height: 6,
 	}
 
-	pl, err := calculateArea(circle)
+	pl, err := calculete.CalculateArea(circle)
 	if err != nil {
 		fmt.Print(err)
 	} else {
 		fmt.Printf("Площадь:%v\n", pl)
 	}
-	pl, err = calculateArea(rectangle)
+	pl, err = calculete.CalculateArea(rectangle)
 	if err != nil {
 		fmt.Print(err)
 	} else {
 		fmt.Printf("Площадь:%v\n", pl)
 	}
-	_, err = calculateArea(triangle)
+	_, err = calculete.CalculateArea(triangle)
 	if err != nil {
 		fmt.Print(err)
 	} else {
 		fmt.Printf("Площадь:%v\n", pl)
 	}
-	pl, err = calculateArea(typeErr)
+	pl, err = calculete.CalculateArea(typeErr)
 	if err != nil {
 		fmt.Print(err)
 	} else {

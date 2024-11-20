@@ -9,6 +9,6 @@ type Employee struct {
 	DepartmentID int    `json:"departmentId"`
 }
 
-func (e Employee) String() string {
+func (e Employee) TetString() string {
 	return fmt.Sprintf("User ID: %d; Age: %d; Name: %s; Department ID: %d; ", e.UserID, e.Age, e.Name, e.DepartmentID)
 }

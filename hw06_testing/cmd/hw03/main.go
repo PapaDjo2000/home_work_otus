@@ -14,6 +14,7 @@ func X(index int, sizeX int) {
 }
 
 func main() {
+
 	var sizeX int
 	var sizeY int
 

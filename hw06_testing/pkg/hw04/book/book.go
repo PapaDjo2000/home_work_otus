@@ -26,7 +26,8 @@ type Book struct {
 }
 
 func NewBook(title, author string, year, size int, rate float32) *Book {
-	id, _ := uuid.NewRandom()
+	id := uuid.New()
+
 	return &Book{
 		id:     id,
 		title:  title,
@@ -35,10 +36,6 @@ func NewBook(title, author string, year, size int, rate float32) *Book {
 		size:   size,
 		rate:   rate,
 	}
-}
-
-func (b *Book) ID() uuid.UUID {
-	return b.id
 }
 
 func (b *Book) SetID(id uuid.UUID) {
