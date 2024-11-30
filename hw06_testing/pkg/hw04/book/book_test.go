@@ -15,15 +15,45 @@ var (
 	rate   float32 = 4.5
 )
 
-func TestBook_NewBook(t *testing.T) {
-	book := NewBook(title, author, year, size, rate)
+func TestBook_NewCompare(t *testing.T) {
+	testNewCompare := NewCompare(Year)
+	assert.Equal(t, testNewCompare.Usertype, Year)
+}
 
-	assert.NotNil(t, book.id)
-	assert.Equal(t, author, book.author)
-	assert.Equal(t, title, book.title)
-	assert.Equal(t, year, book.year)
-	assert.Equal(t, size, book.size)
-	assert.Equal(t, rate, book.rate)
+func TestBook_CompareBook(t *testing.T) {
+	var def Usertype = 5
+	newbook1 := NewBook("Властелин колец 1", "Толкин", 1956, 1125, 154.32)
+	newbook2 := NewBook("Властелин колец 2", "Толкин", 1955, 954, 154.2)
+
+	testCases := []struct {
+		name       string
+		usertype   Usertype
+		wantResult bool
+	}{
+		{name: "Year",
+			usertype:   Year,
+			wantResult: true,
+		},
+		{name: "Size",
+			usertype:   Size,
+			wantResult: true,
+		},
+		{name: "Rate",
+			usertype:   Rate,
+			wantResult: true,
+		},
+		{name: "def",
+			usertype:   def,
+			wantResult: false,
+		},
+	}
+	for _, tC := range testCases {
+		t.Run(tC.name, func(t *testing.T) {
+			new := NewCompare(tC.usertype)
+			result := new.CompareBook(*newbook1, *newbook2)
+			assert.Equal(t, tC.wantResult, result)
+		})
+	}
 }
 
 func TestBook_SetID(t *testing.T) {
@@ -95,64 +125,4 @@ func TestBook_Rate(t *testing.T) {
 	book := NewBook(title, author, year, size, rate)
 	testRate := book.Rate()
 	assert.Equal(t, testRate, book.rate)
-}
-
-func TestBook_NewCompare(t *testing.T) {
-	testNewCompare := NewCompare(Year)
-	assert.Equal(t, testNewCompare.Usertype, Year)
-}
-
-func TestBook_CompareBook(t *testing.T) {
-	var def Usertype = 5
-	newbook1 := NewBook("Властелин колец 1", "Толкин", 1954, 1125, 154.32)
-	newbook2 := NewBook("Властелин колец 2", "Толкин", 1955, 954, 154.32)
-
-	Compare := NewCompare(Year)
-	testCompare := Compare.CompareBook(*newbook1, *newbook2)
-	assert.True(t, true, testCompare)
-
-	Compare = NewCompare(Size)
-	testCompare = Compare.CompareBook(*newbook1, *newbook2)
-	assert.True(t, true, testCompare)
-
-	Compare = NewCompare(Rate)
-	testCompare = Compare.CompareBook(*newbook1, *newbook2)
-	assert.True(t, true, testCompare)
-
-	Compare = NewCompare(def)
-	testCompare = Compare.CompareBook(*newbook1, *newbook2)
-	assert.False(t, false, testCompare)
-
-	///ДВа варианта !
-
-	testCases := []struct {
-		name     string
-		usertype Usertype
-	}{
-		{name: "Year",
-			usertype: Year,
-		},
-		{name: "Size",
-			usertype: Size,
-		},
-		{name: "Rate",
-			usertype: Rate,
-		},
-		{name: "def",
-			usertype: def,
-		},
-	}
-	for _, tC := range testCases {
-		t.Run(tC.name, func(t *testing.T) {
-			if tC.usertype != def {
-				Compare = NewCompare(tC.usertype)
-				testCompare = Compare.CompareBook(*newbook1, *newbook2)
-				assert.True(t, true, testCompare)
-			} else {
-				Compare = NewCompare(def)
-				testCompare = Compare.CompareBook(*newbook1, *newbook2)
-				assert.False(t, false, testCompare)
-			}
-		})
-	}
 }

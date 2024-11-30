@@ -15,7 +15,6 @@ func TestFigura_AreaCircle(t *testing.T) {
 		{
 			name:   "1",
 			radius: 12,
-			result: 0.0,
 		},
 	}
 	for _, tC := range testCases {
@@ -41,13 +40,11 @@ func TestFigura_AreaRectangle(t *testing.T) {
 			name:   "1",
 			wigth:  12,
 			height: 43,
-			result: 0.0,
 		},
 		{
 			name:   "2",
 			wigth:  43,
 			height: 134,
-			result: 0.0,
 		},
 	}
 	for _, tC := range testCases {
@@ -73,13 +70,11 @@ func TestFigura_AreaTriangle(t *testing.T) {
 			name:   "1",
 			basis:  12,
 			height: 43,
-			result: 0.0,
 		},
 		{
 			name:   "2",
 			basis:  43,
 			height: 134,
-			result: 0.0,
 		},
 	}
 	for _, tC := range testCases {
