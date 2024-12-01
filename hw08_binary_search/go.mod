@@ -1,4 +1,4 @@
-module github.com/PapaDjo2000/hw08_binary_search
+module github.com/PapaDjo2000/home_work_otus/hw08_binary_search
 
 go 1.20
 
