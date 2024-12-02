@@ -2,8 +2,6 @@ github.com/PapaDjo2000/home_work_otus/hw02_fix_app v0.0.0-20241115150045-eab636b
 github.com/PapaDjo2000/home_work_otus/hw02_fix_app v0.0.0-20241115150045-eab636b6884e/go.mod h1:K0cJmAboh9PuXuLtxoPNBtY9ya8ZpSVZs2hAXiGbWug=
 github.com/PapaDjo2000/home_work_otus/hw04_struct_comparator v0.0.0-20241115150045-eab636b6884e h1:MRZedUV6nAga2DqnrvKWrHFy0faDDrxVpLufzw+j7Uk=
 github.com/PapaDjo2000/home_work_otus/hw04_struct_comparator v0.0.0-20241115150045-eab636b6884e/go.mod h1:dfUC45C+zT+V5knhMUGjRY6pRE1N2pkzmXLYHtUlZjw=
-github.com/PapaDjo2000/home_work_otus/hw05_shapes v0.0.0-20241115150045-eab636b6884e h1:ZQ4A4gsMsm8n/gze+BsPdsbndnX8IUV923CKWg/7UhM=
-github.com/PapaDjo2000/home_work_otus/hw05_shapes v0.0.0-20241115150045-eab636b6884e/go.mod h1:cKIEAEm9Zb36IXoRRdviavsxXnQiuZ/+NzUX8ZJ3Xms=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=

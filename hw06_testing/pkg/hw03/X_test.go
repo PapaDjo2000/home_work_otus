@@ -1,34 +1,29 @@
 package packageX
 
-import "testing"
+import (
+	"testing"
 
-func Test(t *testing.T) {
+	"github.com/stretchr/testify/assert"
+)
+
+func TestPackageX_X(t *testing.T) {
 	testCases := []struct {
-		name string
-		x    int
-		y    int
+		name  string
+		index int
+		x     int
+		want  string
 	}{
 		{
-			name: "1",
-			x:    123,
-			y:    532,
+			name:  "1",
+			index: 1,
+			x:     5,
+			want:  " ",
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			for i := 0; i < tC.y; i++ {
-				if i%2 == 0 {
-					for index := 0; index < tC.x; index++ {
-						X(index, tC.x)
-
-					}
-				} else {
-					for index := 1; index < tC.x; index++ {
-						X(index, tC.x)
-					}
-				}
-			}
+			a := []byte(X(tC.index, tC.x))
+			assert.Equal(t, tC.want, a)
 		})
-
 	}
 }

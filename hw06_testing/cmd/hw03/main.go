@@ -1,38 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-func X(index int, sizeX int) {
-	if index%2 == 0 {
-		fmt.Print(" ")
-	} else {
-		fmt.Print("#")
-	}
-	if index == sizeX-1 {
-		fmt.Println("")
-	}
-}
+	packageX "github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw03"
+)
 
 func main() {
-
-	var sizeX int
-	var sizeY int
+	var x, y int
 
 	fmt.Println("Введите Х")
-	fmt.Scanf("%d", &sizeX)
+	fmt.Scanf("%d", &x)
 
 	fmt.Println("Введите У")
-	fmt.Scanf("%d", &sizeY)
-
-	for i := 0; i < sizeY; i++ {
-		if i%2 == 0 {
-			for index := 0; index < sizeX; index++ {
-				X(index, sizeX)
-			}
-		} else {
-			for index := 1; index < sizeX; index++ {
-				X(index, sizeX)
-			}
-		}
-	}
+	fmt.Scanf("%d", &y)
+	packageX.Chess(y, x)
 }

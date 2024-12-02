@@ -1,30 +1,21 @@
 package printer
 
 import (
-	"go/types"
+	"fmt"
 	"testing"
 
-	"github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw02/reader"
+	"github.com/PapaDjo2000/home_work_otus/hw06_testing/pkg/hw02/types"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPrinter_PrintStaff(t *testing.T) {
-	js := "../../../json/data.json"
-	st, _ := reader.ReadJSON(js)
+	var emp []types.Employee = []types.Employee{
+		{UserID: 12, Age: 43, Name: "Djon", DepartmentID: 13245},
+		{UserID: 2, Age: 4, Name: "Djo", DepartmentID: 1324}}
 
-	testCases := []struct {
-		name string
-		stf  []types.Employee
-		result
-	}{
-		{
-			name: "1",
-			stf:  st,
-		},
-	}
-	for _, tC := range testCases {
-		t.Run(tC.name, func(t *testing.T) {
-
-		})
+	for i := 0; i < len(emp); i++ {
+		want := fmt.Sprintln("UID:", emp[i].UserID, " Age:", emp[i].Age, "Name:", emp[i].Name, "DepID:", emp[i].DepartmentID)
+		assert.Equal(t, want, PrintStaff(emp))
 	}
 
 }

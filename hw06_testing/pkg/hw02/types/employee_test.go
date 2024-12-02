@@ -7,21 +7,22 @@ import (
 )
 
 func TestTypes_String(t *testing.T) {
-	var emp Employee
 	testCases := []struct {
 		name string
-		str  string
+		emp  Employee
+		want string
 	}{
 		{
 			name: "1",
-			str:  emp.String(),
+			emp:  Employee{UserID: 12, Age: 43, Name: "Djon", DepartmentID: 13245},
+			want: "User ID: 12; Age: 43; Name: Djon; Department ID: 13245; ",
 		},
 	}
 	for _, tC := range testCases {
 
 		t.Run(tC.name, func(t *testing.T) {
-			str := emp.String()
-			assert.Equal(t, tC.str, str)
+			result := tC.emp.String()
+			assert.Equal(t, tC.want, result)
 		})
 	}
 }

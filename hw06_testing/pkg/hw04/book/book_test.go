@@ -26,32 +26,32 @@ func TestBook_CompareBook(t *testing.T) {
 	newbook2 := NewBook("Властелин колец 2", "Толкин", 1955, 954, 154.2)
 
 	testCases := []struct {
-		name       string
-		usertype   Usertype
-		wantResult bool
+		name     string
+		usertype Usertype
+		want     bool
 	}{
 		{name: "Year",
-			usertype:   Year,
-			wantResult: true,
+			usertype: Year,
+			want:     true,
 		},
 		{name: "Size",
-			usertype:   Size,
-			wantResult: true,
+			usertype: Size,
+			want:     true,
 		},
 		{name: "Rate",
-			usertype:   Rate,
-			wantResult: true,
+			usertype: Rate,
+			want:     true,
 		},
 		{name: "def",
-			usertype:   def,
-			wantResult: false,
+			usertype: def,
+			want:     false,
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
 			new := NewCompare(tC.usertype)
 			result := new.CompareBook(*newbook1, *newbook2)
-			assert.Equal(t, tC.wantResult, result)
+			assert.Equal(t, tC.want, result)
 		})
 	}
 }

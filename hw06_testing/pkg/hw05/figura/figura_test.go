@@ -10,7 +10,7 @@ func TestFigura_AreaCircle(t *testing.T) {
 	testCases := []struct {
 		name   string
 		radius int
-		result float64
+		want   float64
 	}{
 		{
 			name:   "1",
@@ -21,10 +21,10 @@ func TestFigura_AreaCircle(t *testing.T) {
 		t.Run(tC.name, func(t *testing.T) {
 
 			var circle Circle = Circle{Radius: tC.radius}
-			tC.result = 3.14 * (float64(tC.radius) * float64(tC.radius))
+			tC.want = 3.14 * (float64(tC.radius) * float64(tC.radius))
 			testPl := circle.Area()
 
-			assert.Equal(t, tC.result, testPl)
+			assert.Equal(t, tC.want, testPl)
 		})
 	}
 }
@@ -34,7 +34,7 @@ func TestFigura_AreaRectangle(t *testing.T) {
 		name   string
 		wigth  int
 		height int
-		result float64
+		want   float64
 	}{
 		{
 			name:   "1",
@@ -51,10 +51,10 @@ func TestFigura_AreaRectangle(t *testing.T) {
 		t.Run(tC.name, func(t *testing.T) {
 			var rectangle Rectangle = Rectangle{Wigth: tC.wigth,
 				Height: tC.height}
-			tC.result = float64(tC.wigth * tC.height)
+			tC.want = float64(tC.wigth * tC.height)
 			testPl := rectangle.Area()
 
-			assert.Equal(t, tC.result, testPl)
+			assert.Equal(t, tC.want, testPl)
 		})
 	}
 }
@@ -64,7 +64,7 @@ func TestFigura_AreaTriangle(t *testing.T) {
 		name   string
 		basis  int
 		height int
-		result float64
+		want   float64
 	}{
 		{
 			name:   "1",
@@ -81,10 +81,10 @@ func TestFigura_AreaTriangle(t *testing.T) {
 		t.Run(tC.name, func(t *testing.T) {
 			var triangle Triangle = Triangle{Basis: tC.basis,
 				Height: tC.height}
-			tC.result = float64(tC.basis * tC.height / 2)
+			tC.want = float64(tC.basis * tC.height / 2)
 			testPl := triangle.Area()
 
-			assert.Equal(t, tC.result, testPl)
+			assert.Equal(t, tC.want, testPl)
 		})
 	}
 }
