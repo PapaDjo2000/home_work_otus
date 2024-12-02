@@ -7,7 +7,7 @@ import (
 
 func FixString(str string) []string {
 	str = strings.ToLower(str)
-	sli := []string{",", ".", "!", "?", "1", "2", "3", "4"}
+	sli := []string{",", ".", "!", "?", "'", ":", ";", "...", "\"", "(", ")", "-"}
 
 	str = strings.Join(strings.Fields(str), " ")
 
@@ -32,7 +32,7 @@ func CountWord(str string) map[string]int {
 }
 
 func main() {
-	str := CountWord("Строка,. которая213 повторяет строку ?которая строка!")
+	str := CountWord("Строка,. которая повторяет: строку ?которая строка!")
 	fmt.Println(str)
 	fmt.Println(str["строка"])
 }
