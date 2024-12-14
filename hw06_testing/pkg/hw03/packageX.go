@@ -1,4 +1,4 @@
-package packageX
+package packagex
 
 import "fmt"
 
@@ -11,8 +11,8 @@ func X(index int, sizeX int) {
 	if index == sizeX-1 {
 		fmt.Println("")
 	}
-
 }
+
 func Chess(sizeY, sizeX int) {
 	for i := 0; i < sizeY; i++ {
 		if i%2 == 0 {

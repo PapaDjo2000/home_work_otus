@@ -30,27 +30,31 @@ func TestBook_CompareBook(t *testing.T) {
 		usertype Usertype
 		want     bool
 	}{
-		{name: "Year",
+		{
+			name:     "Year",
 			usertype: Year,
 			want:     true,
 		},
-		{name: "Size",
+		{
+			name:     "Size",
 			usertype: Size,
 			want:     true,
 		},
-		{name: "Rate",
+		{
+			name:     "Rate",
 			usertype: Rate,
 			want:     true,
 		},
-		{name: "def",
+		{
+			name:     "def",
 			usertype: def,
 			want:     false,
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			new := NewCompare(tC.usertype)
-			result := new.CompareBook(*newbook1, *newbook2)
+			newBook := NewCompare(tC.usertype)
+			result := newBook.CompareBook(*newbook1, *newbook2)
 			assert.Equal(t, tC.want, result)
 		})
 	}
@@ -77,6 +81,7 @@ func TestBook_SetAuthor(t *testing.T) {
 	book.SetAuthor(testSetAuthor)
 	assert.Equal(t, testSetAuthor, book.author)
 }
+
 func TestBook_SetYear(t *testing.T) {
 	book := NewBook(title, author, year, size, rate)
 	testSetYear := 1923
@@ -90,6 +95,7 @@ func TestBook_SetSize(t *testing.T) {
 	book.SetSize(testSetSize)
 	assert.Equal(t, testSetSize, book.size)
 }
+
 func TestBook_SetRate(t *testing.T) {
 	book := NewBook(title, author, year, size, rate)
 	var testSetRate float32 = 324.42

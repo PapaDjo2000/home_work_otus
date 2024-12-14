@@ -19,8 +19,7 @@ func TestFigura_AreaCircle(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-
-			var circle Circle = Circle{Radius: tC.radius}
+			circle := Circle{Radius: tC.radius}
 			tC.want = 3.14 * (float64(tC.radius) * float64(tC.radius))
 			testPl := circle.Area()
 
@@ -49,8 +48,10 @@ func TestFigura_AreaRectangle(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			var rectangle Rectangle = Rectangle{Wigth: tC.wigth,
-				Height: tC.height}
+			rectangle := Rectangle{
+				Wigth:  tC.wigth,
+				Height: tC.height,
+			}
 			tC.want = float64(tC.wigth * tC.height)
 			testPl := rectangle.Area()
 
@@ -79,8 +80,10 @@ func TestFigura_AreaTriangle(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			var triangle Triangle = Triangle{Basis: tC.basis,
-				Height: tC.height}
+			triangle := Triangle{
+				Basis:  tC.basis,
+				Height: tC.height,
+			}
 			tC.want = float64(tC.basis * tC.height / 2)
 			testPl := triangle.Area()
 

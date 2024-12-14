@@ -9,7 +9,6 @@ import (
 )
 
 func Test(t *testing.T) {
-
 	testCases := []struct {
 		name    string
 		Shape1  shape.Shape
@@ -37,7 +36,7 @@ func Test(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			var a float64 = 0
+			var a float64
 			test, err := CalculateArea(tC.Shape1)
 			assert.NoError(t, err)
 			assert.Equal(t, test, tC.want)
@@ -45,7 +44,6 @@ func Test(t *testing.T) {
 			test, err = CalculateArea(tC.testerr)
 			assert.Error(t, err)
 			assert.Equal(t, test, a)
-
 		})
 	}
 }

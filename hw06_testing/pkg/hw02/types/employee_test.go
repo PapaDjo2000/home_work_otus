@@ -19,7 +19,6 @@ func TestTypes_String(t *testing.T) {
 		},
 	}
 	for _, tC := range testCases {
-
 		t.Run(tC.name, func(t *testing.T) {
 			result := tC.emp.String()
 			assert.Equal(t, tC.want, result)

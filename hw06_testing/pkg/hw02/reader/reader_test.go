@@ -2,6 +2,7 @@ package reader
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"os"
 	"testing"
@@ -12,26 +13,53 @@ import (
 
 func TestReader_ReadJSON(t *testing.T) {
 	filepath := "../../../json/data.json"
+	nonexistent := "../../data.json"
+	invalidfile := "../../../json/invalid.json"
 	var data []types.Employee
 
-	f, _ := os.Open(filepath)
-	bytes, _ := io.ReadAll(f)
-	_ = json.Unmarshal(bytes, &data)
+	_, want := os.Open(nonexistent)
+	_, result := ReadJSON(nonexistent)
+	assert.Equal(t, want, result)
+
+	f, err := os.Open(invalidfile)
+	if err != nil {
+		fmt.Print(err)
+	}
+	_, want = io.ReadAll(f)
+	_, result = ReadJSON(invalidfile)
+	assert.Nil(t, want, result)
+
+	f, err = os.Open(filepath)
+	if err != nil {
+		fmt.Print(err)
+	}
+	bytes, err := io.ReadAll(f)
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	err = json.Unmarshal(bytes, &data)
+	if err != nil {
+		fmt.Print(err)
+	}
 
 	testCases := []struct {
-		name   string
-		result []types.Employee
+		name string
+		want []types.Employee
 	}{
 		{
-			name:   "1",
-			result: data,
+			name: "1",
+			want: data,
 		},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.name, func(t *testing.T) {
-			test, err := ReadJSON(filepath)
+			test, erro := ReadJSON(filepath)
+			if erro != nil {
+				fmt.Print(erro)
+			}
 			assert.NoError(t, err)
-			assert.Equal(t, tC.result, test)
+			assert.Equal(t, tC.want, test)
 		})
 	}
 }
