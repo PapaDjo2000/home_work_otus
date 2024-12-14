@@ -12,36 +12,36 @@ import (
 )
 
 type Book struct {
-	ID     uuid.UUID `json:"ID" xml:"ID" yaml:"ID"`
-	Title  string    `json:"Title" xml:"Title" yaml:"Title"`
-	Author string    `json:"Author" xml:"Author" yaml:"Author"`
-	Year   int       `json:"Year" xml:"Year" yaml:"Year"`
-	Size   int       `json:"Size" xml:"Size" yaml:"Size"`
-	Rate   float32   `json:"Rate" xml:"Rate" yaml:"Rate"`
+	ID     uuid.UUID `json:"id" xml:"id" yaml:"id" bson:"id"`
+	Title  string    `json:"title" xml:"title" yaml:"title" bson:"title"`
+	Author string    `json:"author" xml:"author" yaml:"author" bson:"author"`
+	Year   int       `json:"year" xml:"year" yaml:"year" bson:"year"`
+	Size   int       `json:"size" xml:"size" yaml:"size" bson:"size"`
+	Rate   float32   `json:"rate" xml:"rate" yaml:"rate" bson:"rate"`
 	Sample json.RawMessage
 }
 
-func JsonMarshal(book []Book) ([]byte, error) {
+func JSONMarshal(book []Book) ([]byte, error) {
 	return json.Marshal(book)
 }
 
-func JsonUnMarshal(data []byte, book *[]Book) error {
+func JSONUnMarshal(data []byte, book *[]Book) error {
 	return json.Unmarshal(data, book)
 }
 
-func XmlMarshal(book []Book) ([]byte, error) {
+func XMLMarshal(book []Book) ([]byte, error) {
 	return xml.Marshal(book)
 }
 
-func XmlUnMarshal(data []byte, book *[]Book) error {
+func XMLUnMarshal(data []byte, book *[]Book) error {
 	return xml.Unmarshal(data, book)
 }
 
-func YamlMarshal(book []Book) ([]byte, error) {
+func YAMLMarshal(book []Book) ([]byte, error) {
 	return yaml.Marshal(book)
 }
 
-func YamlUnMarshal(data []byte, book *[]Book) error {
+func YAMLUnMarshal(data []byte, book *[]Book) error {
 	return yaml.Unmarshal(data, book)
 }
 

@@ -29,13 +29,13 @@ func TestSerialisationDeserialisation(t *testing.T) {
 
 	want, err := json.Marshal(books)
 	assert.NoError(t, err)
-	result, err := JsonMarshal(books)
+	result, err := JSONMarshal(books)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
 	err = json.Unmarshal(result, &desBook)
 	assert.NoError(t, err)
-	err = JsonUnMarshal(result, &desBook)
+	err = JSONUnMarshal(result, &desBook)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
@@ -43,13 +43,13 @@ func TestSerialisationDeserialisation(t *testing.T) {
 
 	want, err = xml.Marshal(books)
 	assert.NoError(t, err)
-	result, err = XmlMarshal(books)
+	result, err = XMLMarshal(books)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
 	err = xml.Unmarshal(result, &desBook)
 	assert.NoError(t, err)
-	err = XmlUnMarshal(result, &desBook)
+	err = XMLUnMarshal(result, &desBook)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
@@ -57,13 +57,13 @@ func TestSerialisationDeserialisation(t *testing.T) {
 
 	want, err = yaml.Marshal(books)
 	assert.NoError(t, err)
-	result, err = YamlMarshal(books)
+	result, err = YAMLMarshal(books)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
 	err = yaml.Unmarshal(result, &desBook)
 	assert.NoError(t, err)
-	err = YamlUnMarshal(result, &desBook)
+	err = YAMLUnMarshal(result, &desBook)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
