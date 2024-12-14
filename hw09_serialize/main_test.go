@@ -25,8 +25,6 @@ var books = []Book{{
 func TestSerialisationDeserialisation(t *testing.T) {
 	var desBook []Book
 
-	//Test Json
-
 	want, err := json.Marshal(books)
 	assert.NoError(t, err)
 	result, err := JSONMarshal(books)
@@ -38,8 +36,6 @@ func TestSerialisationDeserialisation(t *testing.T) {
 	err = JSONUnMarshal(result, &desBook)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
-
-	//Test Xml
 
 	want, err = xml.Marshal(books)
 	assert.NoError(t, err)
@@ -53,8 +49,6 @@ func TestSerialisationDeserialisation(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
-	//Test Yaml
-
 	want, err = yaml.Marshal(books)
 	assert.NoError(t, err)
 	result, err = YAMLMarshal(books)
@@ -66,8 +60,6 @@ func TestSerialisationDeserialisation(t *testing.T) {
 	err = YAMLUnMarshal(result, &desBook)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
-
-	//Test Msgpack
 
 	want, err = msgpack.Marshal(books)
 	assert.NoError(t, err)
@@ -81,10 +73,8 @@ func TestSerialisationDeserialisation(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
 
-	//Test GOB
-
 	var buf bytes.Buffer
-	//Encoder
+
 	encoder := gob.NewEncoder(&buf)
 	err = encoder.Encode(books)
 	assert.NoError(t, err)
@@ -93,7 +83,7 @@ func TestSerialisationDeserialisation(t *testing.T) {
 	result, err = GobMarshal(books)
 	assert.NoError(t, err)
 	assert.Equal(t, want, result)
-	//Decoder
+
 	newbuf := bytes.NewBuffer(want)
 	decod := gob.NewDecoder(newbuf)
 	err = decod.Decode(&desBook)
