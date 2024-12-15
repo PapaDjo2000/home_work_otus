@@ -14,5 +14,5 @@ func main() {
 
 	fmt.Println("Введите У")
 	fmt.Scanf("%d", &y)
-	packageX.Chess(y, x)
+	fmt.Print(packageX.Chess(y, x))
 }
