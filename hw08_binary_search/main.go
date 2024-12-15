@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	search "github.com/PapaDjo2000/hw08_binary_search/pkg"
+	search "github.com/PapaDjo2000/home_work_otus/hw08_binary_search/pkg"
 )
 
 func main() {
