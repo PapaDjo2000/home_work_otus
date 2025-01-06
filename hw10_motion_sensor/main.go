@@ -21,7 +21,6 @@ func sensor(senschan chan<- int) {
 		case <-end:
 			return
 		case senschan <- int(n.Int64()):
-		case <-time.After(1 * time.Second):
 		}
 	}
 }
