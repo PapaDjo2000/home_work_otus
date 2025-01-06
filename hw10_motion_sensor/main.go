@@ -10,8 +10,9 @@ import (
 func sensor(senschan chan<- int) {
 	defer close(senschan)
 	end := time.After(1 * time.Minute)
+	limit := big.NewInt(50)
+
 	for {
-		limit := big.NewInt(50)
 		n, err := rand.Int(rand.Reader, limit)
 		if err != nil {
 			continue
@@ -33,11 +34,7 @@ func data(senschan <-chan int, datachan chan<- float64) {
 		data += float64(value)
 		count++
 		if count == 10 {
-			select {
-			case datachan <- data / 10:
-			case <-time.After(1 * time.Second):
-			}
-
+			datachan <- data / 10
 			data = 0
 			count = 0
 		}
