@@ -1,0 +1,6 @@
+2025-01-19 19:53:01 INFO Starting application...
+2025-01-19 19:53:03 INFO Application version 1.0.0
+2025-01-19 19:53:05 WARN Unable to connect to database: Connection refused 
+2025-01-19 19:53:06 ERROR Failed to load configuration file: config.json 
+2025-01-19 19:53:07 FATAL Critical error occurred: Division by zero 
+2025-01-19 19:53:08 INFO Application stopped
