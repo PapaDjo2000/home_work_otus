@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 type User struct {
@@ -18,6 +19,7 @@ func hendler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(r.Header)
 	fmt.Println(r.URL)
 }
+
 func get(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		w.WriteHeader(http.StatusMethodNotAllowed)
@@ -36,7 +38,9 @@ func get(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("ошибка записи Json", err)
 	}
+	fmt.Println("отправлен ", user)
 }
+
 func post(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		w.WriteHeader(http.StatusMethodNotAllowed)
@@ -53,15 +57,27 @@ func post(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Error decoding JSON: %v", err)
 		return
 	}
-	fmt.Println(newUser)
-
+	w.WriteHeader(http.StatusCreated)
+	fmt.Println("Получен ", newUser)
 }
+
 func main() {
 	ip := flag.String("ip", "127.0.0.1", "IP address")
 	port := flag.String("port", "8080", "Port number")
 	flag.Parse()
 	http.HandleFunc("/", hendler)
-	http.HandleFunc("/get/", get)
-	http.HandleFunc("/post/", post)
-	http.ListenAndServe(*ip+":"+*port, nil)
+	http.HandleFunc("/get", get)
+	http.HandleFunc("/post", post)
+	server := &http.Server{
+		Addr:         *ip + ":" + *port,
+		Handler:      http.DefaultServeMux,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  15 * time.Second,
+	}
+
+	fmt.Println("Starting server on", *ip+":"+*port)
+	if err := server.ListenAndServe(); err != nil {
+		fmt.Println("Error starting server:", err)
+	}
 }
