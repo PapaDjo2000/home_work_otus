@@ -19,7 +19,7 @@ type User struct {
 
 var user User
 
-func HttpGet(urlserv string, user *User) {
+func httpGet(urlserv string, user *User) {
 	urlserv1, err := url.Parse(urlserv)
 	if err != nil {
 		fmt.Print("неверный урл адрес", err)
@@ -62,7 +62,7 @@ func HttpGet(urlserv string, user *User) {
 	fmt.Printf("получен %s\n", string(body))
 }
 
-func HttpPost(urlserv string, userserv User) {
+func httpPost(urlserv string, userserv User) {
 	urlserv1, err := url.Parse(urlserv)
 	if err != nil {
 		fmt.Print("неверный урл адрес", err)
@@ -114,10 +114,10 @@ func main() {
 
 	switch url1 {
 	case "http://localhost:8080/get":
-		HttpGet(url1, &user)
+		httpGet(url1, &user)
 	case "http://localhost:8080/post":
-		HttpPost(url1, userserv)
+		httpPost(url1, userserv)
 	default:
-		HttpGet(url1, &user)
+		httpGet(url1, &user)
 	}
 }

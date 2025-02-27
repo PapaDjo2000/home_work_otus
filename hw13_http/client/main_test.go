@@ -28,7 +28,7 @@ func TestClient_HttpGet(t *testing.T) {
 	defer ts.Close()
 
 	var usertest User
-	HttpGet(ts.URL, &usertest)
+	httpGet(ts.URL, &usertest)
 
 	assert.Equal(t, testUser, usertest)
 }
@@ -52,6 +52,6 @@ func TestClient_HttpPost(t *testing.T) {
 		w.WriteHeader(http.StatusCreated)
 	}))
 	defer ts.Close()
-	HttpPost(ts.URL, testUser)
+	httpPost(ts.URL, testUser)
 	t.Logf("Test passed: Data sent successfully to server.")
 }
