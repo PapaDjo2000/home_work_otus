@@ -92,5 +92,7 @@ group by
     u.id, u.name;
 
 create unique index if not exists idx_users_id on hw.users(id );
+
 create unique index if not exists idx_orders_id on hw.orders (id);
+
 create unique index if not exists idx_product_id on hw.products (id);
